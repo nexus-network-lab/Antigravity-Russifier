@@ -1,6 +1,7 @@
 # Русификатор интерфейса Antigravity (Движок V5)
 
 <p align="left">
+  <a href="https://t.me/nexus_connect_beta"><img src="https://img.shields.io/badge/Telegram-Чат%20сообщества-2CA5E0?style=for-the-badge&logo=telegram" alt="Telegram" /></a>
   <img src="https://img.shields.io/badge/Платформа-Windows%2010%20%2F%2011%20(x64)-0078D6?style=for-the-badge&logo=windows" alt="Platform" />
   <img src="https://img.shields.io/badge/Формат-Standalone%20EXE-green?style=for-the-badge" alt="Format" />
   <img src="https://img.shields.io/badge/Версия-v5.0-blue?style=for-the-badge" alt="Version" />
@@ -72,3 +73,9 @@
 * Для сборки запустите `BUILD.bat` (требуются установленные `node.exe` и `go`).
 
 
+
+---
+
+## Обратная связь и чат тестеров
+
+* 💬 **Telegram-группа:** [**t.me/nexus_connect_beta**](https://t.me/nexus_connect_beta) — пишите, если нашли непереведённую фразу, баг или хотите предложить улучшение.
