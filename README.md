@@ -19,7 +19,7 @@
 
 1. **Полностью закройте Antigravity.**  
    Обязательно проверьте значок в трее Windows (возле часов): правый клик → *Выход*. Если программа открыта, патчер не сможет перезаписать занятый файл.
-2. Скачайте актуальный файл [**Русификатор Antigravity.exe**](https://github.com/nexus-network-lab/Antigravity-Russifier/releases) (или возьмите напрямую из репозитория).
+2. Скачайте актуальный файл [**Русификатор Antigravity.exe**](https://github.com/nexus-network-lab/Antigravity-Russifier/releases/download/v5.0/Antigravity_Russifier.exe) (или возьмите напрямую из репозитория).
 3. Запустите `Русификатор Antigravity.exe`.
 4. В появившемся консольном меню нажмите клавишу **`1`** (Установить).
 5. Запустите Antigravity — интерфейс уже на русском.
@@ -63,3 +63,4 @@
   * `src/russify_antigravity.js` — скрипт распаковки и модификации `app.asar`.
 * Оболочка лаунчера написана на Go (`go-launcher/`).
 * Для сборки запустите `BUILD.bat` (требуются установленные `node.exe` и `go`).
+
