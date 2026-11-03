@@ -1,0 +1,1095 @@
+{
+ "version": 5,
+ "activityExact": [
+  "Exploring",
+  "Thought",
+  "Thinking",
+  "Running commands",
+  "Running command",
+  "Ran command",
+  "Ran commands",
+  "Interpreting user input",
+  "Interpreting user's single word",
+  "Interpreting the user's request",
+  "Understanding the request",
+  "Analyzing the request",
+  "Planning next steps",
+  "Checking project context",
+  "Searching project files",
+  "Reviewing project files",
+  "Reading project files",
+  "Inspecting files",
+  "Verifying changes",
+  "Testing changes",
+  "Preparing changes",
+  "Applying changes",
+  "Summarizing results",
+  "Comparing results",
+  "Investigating issue",
+  "Checking current state",
+  "Reviewing current state",
+  "Error",
+  "Request failed",
+  "Command failed",
+  "Operation failed",
+  "Something went wrong",
+  "Something went wrong.",
+  "Bad Request",
+  "Unauthorized",
+  "Forbidden",
+  "Not Found",
+  "Connection failed",
+  "Could not connect to server",
+  "No such host",
+  "Timed out",
+  "Timeout",
+  "Permission denied",
+  "Access denied",
+  "File not found",
+  "Network error",
+  "Connection reset",
+  "User location is not supported for the API use.",
+  "User location is not supported for the API use",
+  "Show details",
+  "Hide details",
+  "Technical details",
+  "Copy error",
+  "Copy details",
+  "Retry",
+  "Try again",
+  "Cancel",
+  "Continue",
+  "Ran",
+  "Analyzed",
+  "Analyzing",
+  "Viewed",
+  "Viewing",
+  "Edited",
+  "Editing",
+  "Created",
+  "Creating",
+  "Deleted",
+  "Deleting",
+  "Listed",
+  "Listing",
+  "Searched",
+  "Searching",
+  "Read",
+  "Reading",
+  "Fetched",
+  "Fetching",
+  "Executed",
+  "Executing",
+  "Opened",
+  "Opening",
+  "Wrote",
+  "Writing",
+  "Moved",
+  "Renamed",
+  "Copied",
+  "Clicked",
+  "Clicking",
+  "Navigated",
+  "Navigating",
+  "Scrolled",
+  "Scrolling",
+  "Typed",
+  "Typing",
+  "Captured",
+  "Capturing",
+  "Retrieved",
+  "Retrieving",
+  "Checked",
+  "Checking",
+  "Checked task",
+  "Checking task",
+  "Finished",
+  "finished",
+  "Exited",
+  "Thought Process",
+  "Subagent",
+  "Subagents",
+  "Task finished",
+  "Background task finished",
+  "Waiting for command completion",
+  "Hide breakdown",
+  "Show breakdown"
+ ],
+ "placeholders": [
+  "Ask anything, @ to mention, / for actions",
+  "Ask anything, @ to mention",
+  "Message subagent, @ to mention, / for actions",
+  "Message subagent, @ to mention",
+  "Type / and select plan to have the agent generate a plan."
+ ],
+ "rules": [
+  {
+   "re": "^(?:Thought|Thinking) for (\\d+(?:[.,]\\d+)?)\\s*ms$",
+   "to": "Размышлял $1 мс",
+   "scope": "any"
+  },
+  {
+   "re": "^(?:Thought|Thinking) for (\\d+)\\s*m(?:in(?:ute)?s?)?\\s*(\\d+)\\s*s(?:ec(?:ond)?s?)?$",
+   "to": "Размышлял $1 мин $2 с",
+   "scope": "any"
+  },
+  {
+   "re": "^(?:Thought|Thinking) for (\\d+)\\s*m(?:in(?:ute)?s?)?$",
+   "to": "Размышлял $1 мин",
+   "scope": "any"
+  },
+  {
+   "re": "^(?:Thought|Thinking) for (\\d+(?:[.,]\\d+)?)\\s*(?:s|secs?|seconds?)$",
+   "to": "Размышлял $1 с",
+   "scope": "any"
+  },
+  {
+   "re": "^Worked for (\\d+)\\s*m(?:in(?:ute)?s?)?\\s*(\\d+)\\s*s(?:ec(?:ond)?s?)?$",
+   "to": "Работал $1 мин $2 с",
+   "scope": "any"
+  },
+  {
+   "re": "^Worked for (\\d+(?:[.,]\\d+)?)\\s*(?:s|secs?|seconds?)$",
+   "to": "Работал $1 с",
+   "scope": "any"
+  },
+  {
+   "re": "^Exited with code (-?\\d+)\\.?$",
+   "to": "Завершено с кодом $1",
+   "scope": "any"
+  },
+  {
+   "re": "^Show (\\d+) breakdowns?$",
+   "to": "Показать $1 {p:1|детализацию|детализации|детализаций}",
+   "scope": "any"
+  },
+  {
+   "re": "^Hide (\\d+) breakdowns?$",
+   "to": "Скрыть $1 {p:1|детализацию|детализации|детализаций}",
+   "scope": "any"
+  },
+  {
+   "re": "^([\\d\\s.,\\u00a0\\u202f]+) / ([\\d\\s.,\\u00a0\\u202f]+) tokens \\(([\\d.,]+)%\\)$",
+   "to": "$1 / $2 токенов ($3%)",
+   "scope": "any"
+  },
+  {
+   "re": "^([\\d\\s.,\\u00a0\\u202f]+) tokens?$",
+   "to": "$1 токенов",
+   "scope": "any"
+  },
+  {
+   "re": "^(\\d+) seconds? ago$",
+   "to": "$1 {p:1|секунду|секунды|секунд} назад",
+   "scope": "ui"
+  },
+  {
+   "re": "^in (\\d+) seconds?$",
+   "to": "через $1 {p:1|секунду|секунды|секунд}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) minutes? ago$",
+   "to": "$1 {p:1|минуту|минуты|минут} назад",
+   "scope": "ui"
+  },
+  {
+   "re": "^in (\\d+) minutes?$",
+   "to": "через $1 {p:1|минуту|минуты|минут}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) hours? ago$",
+   "to": "$1 {p:1|час|часа|часов} назад",
+   "scope": "ui"
+  },
+  {
+   "re": "^in (\\d+) hours?$",
+   "to": "через $1 {p:1|час|часа|часов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) days? ago$",
+   "to": "$1 {p:1|день|дня|дней} назад",
+   "scope": "ui"
+  },
+  {
+   "re": "^in (\\d+) days?$",
+   "to": "через $1 {p:1|день|дня|дней}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) weeks? ago$",
+   "to": "$1 {p:1|неделю|недели|недель} назад",
+   "scope": "ui"
+  },
+  {
+   "re": "^in (\\d+) weeks?$",
+   "to": "через $1 {p:1|неделю|недели|недель}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) months? ago$",
+   "to": "$1 {p:1|месяц|месяца|месяцев} назад",
+   "scope": "ui"
+  },
+  {
+   "re": "^in (\\d+) months?$",
+   "to": "через $1 {p:1|месяц|месяца|месяцев}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) years? ago$",
+   "to": "$1 {p:1|год|года|лет} назад",
+   "scope": "ui"
+  },
+  {
+   "re": "^in (\\d+) years?$",
+   "to": "через $1 {p:1|год|года|лет}",
+   "scope": "ui"
+  },
+  {
+   "re": "^Checked task (.+?) finished$",
+   "to": "Проверена задача $1: завершена",
+   "scope": "any",
+   "maxLen": 300
+  },
+  {
+   "re": "^Checked task (.+)$",
+   "to": "Проверена задача $1",
+   "scope": "any",
+   "maxLen": 300
+  },
+  {
+   "re": "^Checking task (.+)$",
+   "to": "Проверка задачи $1",
+   "scope": "any",
+   "maxLen": 300
+  },
+  {
+   "re": "^Task (.+?) finished$",
+   "to": "Задача $1 завершена",
+   "scope": "any",
+   "maxLen": 300
+  },
+  {
+   "re": "^(.{1,160}) exited with code (-?\\d+)\\.?$",
+   "to": "$1: завершено с кодом $2",
+   "scope": "any"
+  },
+  {
+   "re": "^(.{2,160}) finished$",
+   "to": "$1 — завершено",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|it|they|we|i|you|when|once|after|before|if)\\b"
+  },
+  {
+   "re": "^Ran (\\d+) commands?$",
+   "to": "Выполнено команд: $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^Running (\\d+) commands?$",
+   "to": "Выполняется команд: $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^(?:Ran|Exploring|Running) (\\d+) search(?:es)?$",
+   "to": "Выполнено поисков: $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^Found (\\d+) match(?:es)?$",
+   "to": "Найдено совпадений: $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^Error: (.+)$",
+   "to": "Ошибка: $1",
+   "scope": "ui",
+   "maxLen": 400
+  },
+  {
+   "re": "^Something went wrong\\.? ?\\((\\d+)\\)$",
+   "to": "Что-то пошло не так. ($1)",
+   "scope": "ui"
+  },
+  {
+   "re": "^Waiting for command completion \\(up to (\\d+) ?(?:s|seconds?)\\)$",
+   "to": "Ожидание завершения команды (до $1 с)",
+   "scope": "any"
+  },
+  {
+   "re": "^Ran command:\\s*(.+)$",
+   "to": "Выполнена команда: $1",
+   "scope": "ui",
+   "maxLen": 300
+  },
+  {
+   "re": "^Ran (.+)$",
+   "to": "Выполнено: $1",
+   "scope": "ui",
+   "maxLen": 300,
+   "deny": "^(?:the|a|an|this|that|it|them|through|into|about)\\b"
+  },
+  {
+   "re": "^Searched for (.+)$",
+   "to": "Поиск: $1",
+   "scope": "ui",
+   "maxLen": 200
+  },
+  {
+   "re": "^Searching for (.+)$",
+   "to": "Поиск: $1",
+   "scope": "ui",
+   "maxLen": 200
+  },
+  {
+   "re": "^Searched web(?: for)?:? (.+)$",
+   "to": "Поиск в интернете: $1",
+   "scope": "ui",
+   "maxLen": 200
+  },
+  {
+   "re": "^Listed directory (.+)$",
+   "to": "Просмотрена папка: $1",
+   "scope": "ui",
+   "maxLen": 300
+  },
+  {
+   "re": "^Listing directory (.+)$",
+   "to": "Просмотр папки: $1",
+   "scope": "ui",
+   "maxLen": 300
+  },
+  {
+   "re": "^Analyzed (.{1,200})$",
+   "to": "Проанализировано: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Analyzing (.{1,200})$",
+   "to": "Анализ: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Viewed (.{1,200})$",
+   "to": "Просмотрено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Viewing (.{1,200})$",
+   "to": "Просмотр: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Edited (.{1,200})$",
+   "to": "Изменено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Editing (.{1,200})$",
+   "to": "Изменение: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Created (.{1,200})$",
+   "to": "Создано: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Creating (.{1,200})$",
+   "to": "Создание: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Deleted (.{1,200})$",
+   "to": "Удалено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Deleting (.{1,200})$",
+   "to": "Удаление: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Wrote (.{1,200})$",
+   "to": "Записано: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Writing (.{1,200})$",
+   "to": "Запись: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Opened (.{1,200})$",
+   "to": "Открыто: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Opening (.{1,200})$",
+   "to": "Открытие: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Read (.{1,200})$",
+   "to": "Прочитано: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Reading (.{1,200})$",
+   "to": "Чтение: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Fetched (.{1,200})$",
+   "to": "Получено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Fetching (.{1,200})$",
+   "to": "Получение: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Moved (.{1,200})$",
+   "to": "Перемещено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Renamed (.{1,200})$",
+   "to": "Переименовано: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Executed (.{1,200})$",
+   "to": "Выполнено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Executing (.{1,200})$",
+   "to": "Выполнение: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Retrieved (.{1,200})$",
+   "to": "Получено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Retrieving (.{1,200})$",
+   "to": "Получение: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Navigated to (.{1,200})$",
+   "to": "Переход на $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Navigating to (.{1,200})$",
+   "to": "Переход на $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Clicked (.{1,200})$",
+   "to": "Нажато: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Typed (.{1,200})$",
+   "to": "Введено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Scrolled (.{1,200})$",
+   "to": "Прокручено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Captured (.{1,200})$",
+   "to": "Захвачено: $1",
+   "scope": "ui",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) file(?:e?s)?$",
+   "to": "$1 {p:1|файл|файла|файлов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) result(?:e?s)?$",
+   "to": "$1 {p:1|результат|результата|результатов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) match(?:e?s)?$",
+   "to": "$1 {p:1|совпадение|совпадения|совпадений}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) item(?:e?s)?$",
+   "to": "$1 {p:1|элемент|элемента|элементов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) conversation(?:e?s)?$",
+   "to": "$1 {p:1|разговор|разговора|разговоров}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) skill(?:e?s)?$",
+   "to": "$1 {p:1|навык|навыка|навыков}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) rule(?:e?s)?$",
+   "to": "$1 {p:1|правило|правила|правил}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) server(?:e?s)?$",
+   "to": "$1 {p:1|сервер|сервера|серверов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) plugin(?:e?s)?$",
+   "to": "$1 {p:1|плагин|плагина|плагинов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) tool(?:e?s)?$",
+   "to": "$1 {p:1|инструмент|инструмента|инструментов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) step(?:e?s)?$",
+   "to": "$1 {p:1|шаг|шага|шагов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) comment(?:e?s)?$",
+   "to": "$1 {p:1|комментарий|комментария|комментариев}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) subagent(?:e?s)?$",
+   "to": "$1 {p:1|субагент|субагента|субагентов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) workspace(?:e?s)?$",
+   "to": "$1 {p:1|рабочая область|рабочие области|рабочих областей}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) project(?:e?s)?$",
+   "to": "$1 {p:1|проект|проекта|проектов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) tab(?:e?s)?$",
+   "to": "$1 {p:1|вкладка|вкладки|вкладок}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) artifact(?:e?s)?$",
+   "to": "$1 {p:1|артефакт|артефакта|артефактов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) message(?:e?s)?$",
+   "to": "$1 {p:1|сообщение|сообщения|сообщений}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) change(?:e?s)?$",
+   "to": "$1 {p:1|изменение|изменения|изменений}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) line(?:e?s)?$",
+   "to": "$1 {p:1|строка|строки|строк}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) folder(?:e?s)?$",
+   "to": "$1 {p:1|папка|папки|папок}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) error(?:e?s)?$",
+   "to": "$1 {p:1|ошибка|ошибки|ошибок}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) warning(?:e?s)?$",
+   "to": "$1 {p:1|предупреждение|предупреждения|предупреждений}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) task(?:e?s)?$",
+   "to": "$1 {p:1|задача|задачи|задач}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) command(?:e?s)?$",
+   "to": "$1 {p:1|команда|команды|команд}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) search(?:e?s)?$",
+   "to": "$1 {p:1|поиск|поиска|поисков}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) terminal(?:e?s)?$",
+   "to": "$1 {p:1|терминал|терминала|терминалов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) hook(?:e?s)?$",
+   "to": "$1 {p:1|хук|хука|хуков}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) agent(?:e?s)?$",
+   "to": "$1 {p:1|агент|агента|агентов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) model(?:e?s)?$",
+   "to": "$1 {p:1|модель|модели|моделей}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) resource(?:e?s)?$",
+   "to": "$1 {p:1|ресурс|ресурса|ресурсов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) issue(?:e?s)?$",
+   "to": "$1 {p:1|проблема|проблемы|проблем}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) branch(?:e?s)?$",
+   "to": "$1 {p:1|ветка|ветки|веток}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) commit(?:e?s)?$",
+   "to": "$1 {p:1|коммит|коммита|коммитов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) image(?:e?s)?$",
+   "to": "$1 {p:1|изображение|изображения|изображений}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) page(?:e?s)?$",
+   "to": "$1 {p:1|страница|страницы|страниц}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) request(?:e?s)?$",
+   "to": "$1 {p:1|запрос|запроса|запросов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) reference(?:e?s)?$",
+   "to": "$1 {p:1|ссылка|ссылки|ссылок}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) breakdown(?:e?s)?$",
+   "to": "$1 {p:1|детализация|детализации|детализаций}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) session(?:e?s)?$",
+   "to": "$1 {p:1|сессия|сессии|сессий}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) call(?:e?s)?$",
+   "to": "$1 {p:1|вызов|вызова|вызовов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) source(?:e?s)?$",
+   "to": "$1 {p:1|источник|источника|источников}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) workflow(?:e?s)?$",
+   "to": "$1 {p:1|рабочий процесс|рабочих процесса|рабочих процессов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) rule file(?:e?s)?$",
+   "to": "$1 {p:1|файл правил|файла правил|файлов правил}",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d{1,3}(?:[ ,.\\u00a0\\u202f]\\d{3})+|\\d+) token(?:e?s)?$",
+   "to": "$1 {p:1|токен|токена|токенов}",
+   "scope": "ui"
+  },
+  {
+   "re": "^\\+ ?(\\d+) more$",
+   "to": "ещё $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) more$",
+   "to": "ещё $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^Show (\\d+) more$",
+   "to": "Показать ещё $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^Show (\\d+) more (?:items|results|files|lines|comments)$",
+   "to": "Показать ещё $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^See (\\d+) more$",
+   "to": "Показать ещё $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^(\\d+) of (\\d+)$",
+   "to": "$1 из $2",
+   "scope": "ui"
+  },
+  {
+   "re": "^Page (\\d+) of (\\d+)$",
+   "to": "Страница $1 из $2",
+   "scope": "ui"
+  },
+  {
+   "re": "^Step (\\d+)$",
+   "to": "Шаг $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^Step (\\d+) of (\\d+)$",
+   "to": "Шаг $1 из $2",
+   "scope": "ui"
+  },
+  {
+   "re": "^Conversation (\\d+)$",
+   "to": "Разговор $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^Turn (\\d+)$",
+   "to": "Реплика $1",
+   "scope": "ui"
+  },
+  {
+   "re": "^([A-Z][A-Za-z0-9 &/\\-]{2,40}) \\((\\d+)\\)$",
+   "to": "{t:1} ($2)",
+   "scope": "ui",
+   "requireDict": [
+    1
+   ]
+  },
+  {
+   "re": "^([A-Z][A-Za-z0-9 &/\\-]{2,40}): (.{1,100})$",
+   "to": "{t:1}: {t:2}",
+   "scope": "ui",
+   "requireDict": [
+    1
+   ]
+  },
+  {
+   "re": "^The single-word input\\s+[\\\"\\u201c](.+?)[\\\"\\u201d]\\s+requires considering multiple possibilities within the project context\\.\\s*The word could represent a typo, a colloquial reference \\(perhaps slang or a joke\\), or a targeted test phrase\\.\\s*Initial assessment involves scanning project workspaces for any related code or documentation before determining the user's intent\\.?$",
+   "to": "Однословный запрос «$1» может иметь несколько значений в контексте проекта. Агент проверяет связанные рабочие области, код и документацию, а затем определяет намерение пользователя.",
+   "scope": "activity",
+   "flags": "i"
+  },
+  {
+   "re": "^Interpreting (.{3,160})$",
+   "to": "Интерпретация: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Understanding (.{3,160})$",
+   "to": "Анализ: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Analyzing (.{3,160})$",
+   "to": "Анализ: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Checking (.{3,160})$",
+   "to": "Проверка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Reviewing (.{3,160})$",
+   "to": "Проверка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Reading (.{3,160})$",
+   "to": "Чтение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Inspecting (.{3,160})$",
+   "to": "Проверка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Investigating (.{3,160})$",
+   "to": "Исследование: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Planning (.{3,160})$",
+   "to": "Планирование: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Preparing (.{3,160})$",
+   "to": "Подготовка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Verifying (.{3,160})$",
+   "to": "Проверка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Summarizing (.{3,160})$",
+   "to": "Сводка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Comparing (.{3,160})$",
+   "to": "Сравнение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Fixing (.{3,160})$",
+   "to": "Исправление: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Updating (.{3,160})$",
+   "to": "Обновление: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Testing (.{3,160})$",
+   "to": "Тестирование: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Applying (.{3,160})$",
+   "to": "Применение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Opening (.{3,160})$",
+   "to": "Открытие: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Locating (.{3,160})$",
+   "to": "Поиск: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Creating (.{3,160})$",
+   "to": "Создание: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Editing (.{3,160})$",
+   "to": "Редактирование: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Running (.{3,160})$",
+   "to": "Выполнение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Resolving (.{3,160})$",
+   "to": "Решение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Exploring (.{3,160})$",
+   "to": "Изучение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Searching (.{3,160})$",
+   "to": "Поиск: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Examining (.{3,160})$",
+   "to": "Изучение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Refining (.{3,160})$",
+   "to": "Уточнение: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Implementing (.{3,160})$",
+   "to": "Реализация: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Debugging (.{3,160})$",
+   "to": "Отладка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Evaluating (.{3,160})$",
+   "to": "Оценка: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  },
+  {
+   "re": "^Designing (.{3,160})$",
+   "to": "Проектирование: $1",
+   "scope": "activity",
+   "deny": "^(?:the|a|an|this|that|these|those|it|them|my|your|our|through|about|into|and|to|from|for|how|what|why|if|in|on|at|with|of|more|less|all|each|every|some|any)\\b",
+   "noSentence": true
+  }
+ ]
+}

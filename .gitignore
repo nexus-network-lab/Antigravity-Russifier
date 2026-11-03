@@ -1,0 +1,8 @@
+# Dependencies and temp files
+node_modules/
+*.tmp
+*.log
+*.bak
+*.gz
+Thumbs.db
+.DS_Store
