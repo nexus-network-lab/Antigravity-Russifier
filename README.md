@@ -5,10 +5,11 @@
   <img src="https://img.shields.io/badge/Платформа-Windows%2010%20%2F%2011%20(x64)-0078D6?style=for-the-badge&logo=windows" alt="Platform" />
   <img src="https://img.shields.io/badge/Формат-Standalone%20EXE-green?style=for-the-badge" alt="Format" />
   <img src="https://img.shields.io/badge/Версия-v5.0-blue?style=for-the-badge" alt="Version" />
+  <img src="https://img.shields.io/badge/Совместимость-Antigravity%202.0%20(включая%202.29%2B)-8A2BE2?style=for-the-badge" alt="Compatibility" />
 </p>
 
 
-Автономный патчер для перевода интерфейса среды **Antigravity** на русский язык. 
+Автономный патчер для перевода интерфейса среды **Antigravity 2.0** на русский язык (поддерживает любые версии, включая 2.29+). 
 
 Никакого Node.js, компиляторов и танцев с бубном в терминале: всё запаковано в один `.exe` файл, который сам находит установленную программу, делает резервную копию и накатывает перевод за пару секунд.
 
@@ -79,3 +80,4 @@
 ## Обратная связь и чат тестеров
 
 * 💬 **Telegram-группа:** [**t.me/nexus_connect_beta**](https://t.me/nexus_connect_beta) — пишите, если нашли непереведённую фразу, баг или хотите предложить улучшение.
+
