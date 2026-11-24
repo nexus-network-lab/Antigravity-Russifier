@@ -5,11 +5,11 @@
   <img src="https://img.shields.io/badge/Платформа-Windows%2010%20%2F%2011%20(x64)-0078D6?style=for-the-badge&logo=windows" alt="Platform" />
   <img src="https://img.shields.io/badge/Формат-Standalone%20EXE-green?style=for-the-badge" alt="Format" />
   <img src="https://img.shields.io/badge/Версия-v5.0-blue?style=for-the-badge" alt="Version" />
-  <img src="https://img.shields.io/badge/Совместимость-Antigravity%20до%202.32.2-8A2BE2?style=for-the-badge" alt="Compatibility" />
+  <img src="https://img.shields.io/badge/Совместимость-Antigravity%202.0%20—%202.35%2B-8A2BE2?style=for-the-badge" alt="Compatibility" />
 </p>
 
 
-Автономный патчер для перевода интерфейса среды **Antigravity 2.0** на русский язык (поддерживает версии **до 2.32.2** включительно; поддержка 2.35+ сейчас в разработке). 
+Автономный патчер для перевода интерфейса среды **Antigravity 2.0 — 2.35+** на русский язык (полностью обновлён под актуальную версию `2.35+`). 
 
 Никакого Node.js, компиляторов и танцев с бубном в терминале: всё запаковано в один `.exe` файл, который сам находит установленную программу, делает резервную копию и накатывает перевод за пару секунд.
 
@@ -28,7 +28,7 @@
 
 1. **Полностью закройте Antigravity.**  
    Обязательно проверьте значок в трее Windows (возле часов): правый клик → *Выход*. Если программа открыта, патчер не сможет перезаписать занятый файл.
-2. Скачайте актуальный файл [**Русификатор Antigravity.exe**](https://github.com/nexus-network-lab/Antigravity-Russifier/releases/download/v5.0/Antigravity_Russifier.exe) (или возьмите напрямую из репозитория).
+2. Получите актуальный файл **Русификатор Antigravity** в нашем Telegram-боте [**@nexus_connect_support_bot**](https://t.me/nexus_connect_support_bot) по команде `/русификатор` (или из [релизов репозитория](https://github.com/nexus-network-lab/Antigravity-Russifier/releases)).
 3. Запустите `Русификатор Antigravity.exe`.
 4. В появившемся консольном меню нажмите клавишу **`1`** (Установить).
 5. Запустите Antigravity — интерфейс уже на русском.
